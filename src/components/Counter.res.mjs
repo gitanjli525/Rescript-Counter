@@ -26,10 +26,11 @@ function Counter(props) {
   return JsxRuntime.jsxs("div", {
               children: [
                 JsxRuntime.jsx("div", {
-                      children: "Hello world"
+                      children: "Counter"
                     }),
                 JsxRuntime.jsx("div", {
-                      children: match[0]
+                      children: match[0],
+                      className: "border border-yellow-500 w-10 bg-yellow-100"
                     }),
                 JsxRuntime.jsx("button", {
                       children: "Increase",
@@ -46,7 +47,8 @@ function Counter(props) {
                       className: "border border-red-700 p-2 w-20 bg-red-100",
                       onClick: handleReset
                     })
-              ]
+              ],
+              className: "border border-pink-500 my-2 p-2"
             });
 }
 
