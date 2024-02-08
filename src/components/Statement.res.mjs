@@ -3,7 +3,31 @@
 import * as JsxRuntime from "react/jsx-runtime";
 
 function Statement(props) {
-  return JsxRuntime.jsx(JsxRuntime.Fragment, {});
+  return JsxRuntime.jsxs("div", {
+              children: [
+                JsxRuntime.jsx("div", {
+                      children: "Bank Statement"
+                    }),
+                JsxRuntime.jsx("div", {
+                      children: JsxRuntime.jsx("table", {
+                            children: JsxRuntime.jsxs("tr", {
+                                  children: [
+                                    JsxRuntime.jsx("th", {
+                                          children: "Serial"
+                                        }),
+                                    JsxRuntime.jsx("th", {
+                                          children: "Amount"
+                                        }),
+                                    JsxRuntime.jsx("th", {
+                                          children: "Total"
+                                        })
+                                  ]
+                                })
+                          })
+                    })
+              ],
+              className: "border border-pink-500 my-2"
+            });
 }
 
 var make = Statement;

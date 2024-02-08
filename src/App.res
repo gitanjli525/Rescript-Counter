@@ -2,5 +2,6 @@
 let make = () => {
   <>
   <Counter/>
+  <Statement/>
   </>
 }
