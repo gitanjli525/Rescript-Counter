@@ -9,20 +9,35 @@ function Statement(props) {
                       children: "Bank Statement"
                     }),
                 JsxRuntime.jsx("div", {
-                      children: JsxRuntime.jsx("table", {
-                            children: JsxRuntime.jsxs("tr", {
-                                  children: [
-                                    JsxRuntime.jsx("th", {
-                                          children: "Serial"
-                                        }),
-                                    JsxRuntime.jsx("th", {
-                                          children: "Amount"
-                                        }),
-                                    JsxRuntime.jsx("th", {
-                                          children: "Total"
-                                        })
-                                  ]
-                                })
+                      children: JsxRuntime.jsxs("table", {
+                            children: [
+                              JsxRuntime.jsxs("tr", {
+                                    children: [
+                                      JsxRuntime.jsx("th", {
+                                            children: "Serial"
+                                          }),
+                                      JsxRuntime.jsx("th", {
+                                            children: "Amount"
+                                          }),
+                                      JsxRuntime.jsx("th", {
+                                            children: "Total"
+                                          })
+                                    ]
+                                  }),
+                              JsxRuntime.jsxs("tr", {
+                                    children: [
+                                      JsxRuntime.jsx("td", {
+                                            children: 0
+                                          }),
+                                      JsxRuntime.jsx("td", {
+                                            children: 0
+                                          }),
+                                      JsxRuntime.jsx("td", {
+                                            children: 0
+                                          })
+                                    ]
+                                  })
+                            ]
                           })
                     })
               ],
