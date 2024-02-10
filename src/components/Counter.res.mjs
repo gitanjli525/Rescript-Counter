@@ -39,7 +39,7 @@ function Counter(props) {
                     }),
                 JsxRuntime.jsx("button", {
                       children: "Decrease",
-                      className: "border border-red-700 p-2 w-20 bg-red-100",
+                      className: "border border-blue-700 p-2 w-20 bg-blue-100",
                       onClick: handleDecrease
                     }),
                 JsxRuntime.jsx("button", {
