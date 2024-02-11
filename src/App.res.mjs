@@ -6,20 +6,27 @@ import * as Statement from "./components/Statement.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
 
 function App(props) {
+  var match = React.useState(function () {
+        return 0;
+      });
   var defaultState = [{
       serial: 0,
       amount: 0,
       total: 0
     }];
-  var match = React.useState(function () {
+  var match$1 = React.useState(function () {
         return defaultState;
       });
   return JsxRuntime.jsxs(JsxRuntime.Fragment, {
               children: [
                 JsxRuntime.jsx(Counter.make, {
-                      setStatement: match[1]
+                      setStatement: match$1[1],
+                      setCounter: match[1]
                     }),
-                JsxRuntime.jsx(Statement.make, {})
+                JsxRuntime.jsx(Statement.make, {
+                      statement: match$1[0],
+                      counter: match[0]
+                    })
               ]
             });
 }

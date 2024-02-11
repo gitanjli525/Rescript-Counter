@@ -1,5 +1,5 @@
 @react.component
-let make = (~setStatement) => {
+let make = (~setStatement, ~setCounter) => {
   let (count, setCount) = React.useState(() => 0)
 
   let handleIncrease = _ => {
@@ -17,6 +17,7 @@ let make = (~setStatement) => {
       prev->Array.push({serial: lastElement2.serial + 1, amount: 1, total: lastElement2.total + 1})
       prev
     })
+    setCounter(prev => prev + 1)
   }
 
   let handleDecrease = _ => {
@@ -27,6 +28,7 @@ let make = (~setStatement) => {
       prev->Array.push({serial: lastEle.serial + 1, amount: -1, total: lastEle.total - 1})
       prev
     })
+    setCounter(prev => prev + 1)
   }
 
   let handleReset = _ => {

@@ -24,18 +24,21 @@ function Statement(props) {
                                           })
                                     ]
                                   }),
-                              JsxRuntime.jsxs("tr", {
-                                    children: [
-                                      JsxRuntime.jsx("td", {
-                                            children: 0
-                                          }),
-                                      JsxRuntime.jsx("td", {
-                                            children: 0
-                                          }),
-                                      JsxRuntime.jsx("td", {
-                                            children: 0
-                                          })
-                                    ]
+                              props.statement.map(function (row, index) {
+                                    console.log("rendering");
+                                    return JsxRuntime.jsxs("tr", {
+                                                children: [
+                                                  JsxRuntime.jsx("td", {
+                                                        children: row.serial
+                                                      }),
+                                                  JsxRuntime.jsx("td", {
+                                                        children: row.amount
+                                                      }),
+                                                  JsxRuntime.jsx("td", {
+                                                        children: row.total
+                                                      })
+                                                ]
+                                              }, String(index));
                                   })
                             ]
                           })

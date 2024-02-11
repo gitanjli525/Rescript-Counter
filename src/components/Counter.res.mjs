@@ -5,6 +5,7 @@ import * as React from "react";
 import * as JsxRuntime from "react/jsx-runtime";
 
 function Counter(props) {
+  var setCounter = props.setCounter;
   var setStatement = props.setStatement;
   var match = React.useState(function () {
         return 0;
@@ -24,6 +25,9 @@ function Counter(props) {
               });
           return prev;
         });
+    setCounter(function (prev) {
+          return prev + 1 | 0;
+        });
   };
   var handleDecrease = function (param) {
     setCount(function (prev) {
@@ -38,6 +42,9 @@ function Counter(props) {
                 total: lastEle.total - 1 | 0
               });
           return prev;
+        });
+    setCounter(function (prev) {
+          return prev + 1 | 0;
         });
   };
   var handleReset = function (param) {
