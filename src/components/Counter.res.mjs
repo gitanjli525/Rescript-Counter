@@ -51,6 +51,12 @@ function Counter(props) {
     setCount(function (param) {
           return 0;
         });
+    setStatement(function (param) {
+          return [];
+        });
+    setCounter(function (prev) {
+          return prev + 1 | 0;
+        });
   };
   return JsxRuntime.jsxs("div", {
               children: [

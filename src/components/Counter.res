@@ -33,6 +33,8 @@ let make = (~setStatement, ~setCounter) => {
 
   let handleReset = _ => {
     setCount(_ => 0)
+    setStatement(_ => [])
+    setCounter(prev => prev + 1)
   }
 
   let my_tuple = ("gitanjli", 23, "developer")
