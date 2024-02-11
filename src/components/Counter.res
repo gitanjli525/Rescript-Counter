@@ -8,8 +8,19 @@ type stateCounter = {
 let make = (~statement: array<stateCounter>, ~setStatement) => {
   let (count, setCount) = React.useState(() => 0)
 
-  let handleClick = _ => {
+  let handleIncrease = _ => {
     setCount(prev => prev + 1)
+    setStatement((prev: array<stateCounter>) => {
+      let lastIndex = Js.Array2.length(prev) - 1
+      let lastElement: option<stateCounter> = Belt.Array.get(prev, lastIndex)
+      Js.log2(lastElement, "last element")
+      let lastElement2 = switch lastElement {
+      | Some(lastEle) => lastEle
+      | None => {serial: lastIndex, amount: 000, total: 000}
+      }
+      prev->Array.push({serial: lastElement2.serial + 1, amount: 1, total: lastElement2.total + 1})
+      prev
+    })
   }
 
   let handleDecrease = _ => {
@@ -25,7 +36,7 @@ let make = (~statement: array<stateCounter>, ~setStatement) => {
   <div className="border border-pink-500 my-2 p-2">
     <div> {React.string("Counter")} </div>
     <div className="border border-yellow-500 w-10 bg-yellow-100"> {{count}->React.int} </div>
-    <button className="border border-green-500 p-2 w-20 bg-green-100" onClick={handleClick}>
+    <button className="border border-green-500 p-2 w-20 bg-green-100" onClick={handleIncrease}>
       {"Increase"->React.string}
     </button>
     <button className="border border-blue-700 p-2 w-20 bg-blue-100" onClick={handleDecrease}>
