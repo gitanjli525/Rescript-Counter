@@ -1,23 +1,19 @@
-type stateCounter = {
-  serial: int,
-  amount: int,
-  total: int,
-}
-
 @react.component
-let make = (~statement: array<stateCounter>, ~setStatement) => {
+let make = (~setStatement) => {
   let (count, setCount) = React.useState(() => 0)
 
   let handleIncrease = _ => {
     setCount(prev => prev + 1)
-    setStatement((prev: array<stateCounter>) => {
-      let lastIndex = Js.Array2.length(prev) - 1
-      let lastElement: option<stateCounter> = Belt.Array.get(prev, lastIndex)
-      Js.log2(lastElement, "last element")
-      let lastElement2 = switch lastElement {
-      | Some(lastEle) => lastEle
-      | None => {serial: lastIndex, amount: 000, total: 000}
-      }
+    setStatement((prev: array<Utils.stateCounter>) => {
+      // let lastIndex = Js.Array2.length(prev) - 1
+      // let lastElement: option<Utils.stateCounter> = Belt.Array.get(prev, lastIndex)
+      // Js.log2(lastElement, "last element")
+      // let lastElement2 = switch lastElement {
+      // | Some(lastEle) => lastEle
+      // | None => {serial: lastIndex, amount: 000, total: 000}
+      // }
+      let lastElement2 = Utils.getLastElementOfArray((prev: array<Utils.stateCounter>))
+      Js.log2(lastElement2, "last element")
       prev->Array.push({serial: lastElement2.serial + 1, amount: 1, total: lastElement2.total + 1})
       prev
     })
@@ -25,6 +21,12 @@ let make = (~statement: array<stateCounter>, ~setStatement) => {
 
   let handleDecrease = _ => {
     setCount(prev => prev - 1)
+    setStatement((prev: array<Utils.stateCounter>) => {
+      let lastEle = Utils.getLastElementOfArray((prev: array<Utils.stateCounter>))
+      Js.log2(lastEle, "last element")
+      prev->Array.push({serial: lastEle.serial + 1, amount: -1, total: lastEle.total - 1})
+      prev
+    })
   }
 
   let handleReset = _ => {

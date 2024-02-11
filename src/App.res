@@ -1,13 +1,9 @@
-open Counter
-
 @react.component
 let make = () => {
-  //let defaultState: array<Counter.stateCounter> = [{serial: 0, amount: 0, total: 0}]
-  let (statement: array<Counter.stateCounter>, setStatement) = React.useState(() => [
-    {serial: 0, amount: 0, total: 0},
-  ])
+  let defaultState: array<Utils.stateCounter> = [{serial: 0, amount: 0, total: 0}]
+  let (statement: array<Utils.stateCounter>, setStatement) = React.useState(() => defaultState)
   <>
-    <Counter statement setStatement />
+    <Counter setStatement />
     <Statement />
   </>
 }
